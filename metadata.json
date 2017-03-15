@@ -1,0 +1,15 @@
+{
+  "name": "cotocisternas-prometheus",
+  "version": "0.0.1",
+  "author": "Coto Cisternas",
+  "summary": "Prometheus Monitoring Suite",
+  "license": "Apache-2.0",
+  "source": "https://github.com/cotocisternas/puppet-prometheus",
+  "project_page": "https://github.com/cotocisternas/puppet-prometheus",
+  "issues_url": "https://github.com/cotocisternas/puppet-prometheus/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+
