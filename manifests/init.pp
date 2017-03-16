@@ -10,6 +10,7 @@ class prometheus (
   String $service_ensure,
   Boolean $service_enable,
   Optional[String] $service_provider,
+  Optional[Hash] $options,
   ) {
 
   contain ::prometheus::install
