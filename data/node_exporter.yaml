@@ -1,0 +1,35 @@
+---
+prometheus::node_exporter::pkg_version: latest
+prometheus::node_exporter::pkg_name: prometheus-node-exporter
+prometheus::node_exporter::bind: '0.0.0.0'
+prometheus::node_exporter::port: '9100'
+prometheus::node_exporter::config_file: '/etc/default/prometheus-node-exporter'
+prometheus::node_exporter::config_template: 'prometheus/node_exporter.erb'
+prometheus::node_exporter::manage_service: true
+prometheus::node_exporter::manage_firewall: true
+prometheus::node_exporter::service_name: prometheus-node-exporter
+prometheus::node_exporter::service_enable: true
+prometheus::node_exporter::service_ensure: running
+prometheus::node_exporter::service_provider: ~
+
+prometheus::node_exporter::diskstats_ignored_devices: ^(ram|loop|fd)\d+$
+prometheus::node_exporter::filesystem_ignored_mounts: ^/(sys|proc|dev|run)($|/)
+prometheus::node_exporter::megacli_path: megacli
+prometheus::node_exporter::netdev_ignored_dev: ^$
+prometheus::node_exporter::ntp_protocol: 4
+prometheus::node_exporter::ntp_server: 0.debian.pool.ntp.org
+prometheus::node_exporter::procfs: /proc
+prometheus::node_exporter::sysfs: /sys
+prometheus::node_exporter::supervisord_url: http://localhost:9001/RPC2
+prometheus::node_exporter::textfile_dir: /var/lib/prometheus/node-exporter
+prometheus::node_exporter::log_format: logger:stderr
+prometheus::node_exporter::log_level: info
+prometheus::node_exporter::telemetry_path: /metrics
+prometheus::node_exporter::collectors:
+  - diskstats
+  - filesystem
+  - loadavg
+  - meminfo
+  - netdev
+  - stat
+  - time

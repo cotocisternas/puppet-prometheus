@@ -1,0 +1,32 @@
+---
+prometheus::pkg_version: latest
+prometheus::pkg_name: prometheus
+prometheus::config_dir: '/etc/prometheus'
+prometheus::config_mode: '0644'
+prometheus::port: '9090'
+prometheus::config_template: 'prometheus/prometheus.yml.erb'
+prometheus::manage_service: true
+prometheus::manage_firewall: true
+prometheus::purge: false
+prometheus::service_name: prometheus
+prometheus::service_enable: true
+prometheus::service_ensure: running
+prometheus::service_provider: ~
+
+lookup_options:
+  prometheus::options:
+    merge: deep
+
+prometheus::options:
+  global:
+    scrape_interval: 1m
+    scrape_timeout: 10s
+    evaluation_interval: 1m
+    external_labels:
+      hostname: "%{::hostname}"
+  scrape_configs:
+    - job_name: prometheus
+      scrape_interval: 5s
+      static_configs:
+        - targets:
+            - localhost:9090

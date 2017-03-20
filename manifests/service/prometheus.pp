@@ -1,7 +1,7 @@
-# == Class: prometheus::service
+# == Class: prometheus::service::prometheus
 #
 # Author: Coto Cisternas <cotocisternas@gmail.com>
-class prometheus::service inherits prometheus {
+class prometheus::service::prometheus inherits prometheus {
 
   service { "${::prometheus::service_name}":
     ensure      => $::prometheus::service_ensure,

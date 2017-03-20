@@ -5,20 +5,26 @@ class prometheus (
   String $pkg_version,
   String $pkg_name,
   String $config_dir,
+  String $config_mode,
+  String $port,
+  String $config_template,
   Boolean $manage_service,
+  Boolean $manage_firewall,
+  Boolean $purge,
   String $service_name,
-  String $service_ensure,
   Boolean $service_enable,
+  String $service_ensure,
   Optional[String] $service_provider,
+  Hash $options,
   ) {
 
-  contain ::prometheus::install
-  contain ::prometheus::config
-  contain ::prometheus::service
+  contain ::prometheus::install::prometheus
+  contain ::prometheus::config::prometheus
+  contain ::prometheus::service::prometheus
 
-  Class['::prometheus::install'] ->
-  Class['::prometheus::config'] ~>
-  Class['::prometheus::service']
+  Class['::prometheus::install::prometheus'] ->
+  Class['::prometheus::config::prometheus'] ~>
+  Class['::prometheus::service::prometheus']
 
 
 }

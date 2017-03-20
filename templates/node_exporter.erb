@@ -1,0 +1,26 @@
+ARGS="\
+  -collectors.enabled=<%= @collectors_str %> \
+  -collector.diskstats.ignored-devices=<%= @diskstats_ignored_devices %> \
+  -collector.filesystem.ignored-mount-points=<%= @filesystem_ignored_mounts %> \
+  -collector.megacli.command=<%= @megacli_path %> \
+  -collector.netdev.ignored-devices=<%= @netdev_ignored_dev %> \
+  -collector.ntp.protocol-version=<%= @ntp_protocol %> \
+  -collector.ntp.server=<%= @ntp_server %> \
+  -collector.procfs=<%= @procfs %> \
+  -collector.sysfs=<%= @sysfs %> \
+  -collector.supervisord.url=<%= @supervisord_url %> \
+  -collector.textfile.directory=<%= @textfile_dir %> \
+  -log.format=<%= @log_format %> \
+  -log.level=<%= @log_level %> \
+  -web.listen-address=<%= @listen_addr %> \
+  -web.telemetry-path=<%= @telemetry_path %> \
+"
+
+#  -collector.systemd.private
+#    	Establish a private, direct connection to systemd without dbus.
+#  -collector.systemd.unit-blacklist string
+#    	Regexp of systemd units to blacklist. Units must both match whitelist
+#    	and not match blacklist to be included.
+#  -collector.systemd.unit-whitelist string
+#    	Regexp of systemd units to whitelist. Units must both match whitelist
+#    	and not match blacklist to be included. (default ".+")
