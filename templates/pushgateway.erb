@@ -1,0 +1,9 @@
+# Set the command-line arguments to pass to the server.
+ARGS="\
+  -persistence.file="<%= @persistence_file %>" \
+  -persistence.interval=<%= @persistence_interval %> \
+  -required-labels="<%= @required_labels.join(',') %>" \
+  -web.listen-address=<%= @listen_addr %> \
+  -web.local-assets="<%= @local_assets %>" \
+  -web.telemetry-path="<%= @telemetry_path %>" \
+"

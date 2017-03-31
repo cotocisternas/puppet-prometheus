@@ -10,3 +10,5 @@ hierarchy:
     path: "prometheus.yaml"
   - name: "NodeExporter"
     path: "node_exporter.yaml"
+  - name: "Pushgateway"
+    path: "pushgateway.yaml"
