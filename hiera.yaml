@@ -12,3 +12,5 @@ hierarchy:
     path: "node_exporter.yaml"
   - name: "Pushgateway"
     path: "pushgateway.yaml"
+  - name: "Alert-Manager"
+    path: "alertmanager.yaml"

@@ -1,0 +1,9 @@
+# Set the command-line arguments to pass to the server.
+ARGS="\
+  -config.file="<%= @config_file %>" \
+  --log.level=<%= @log_level %> \
+  -storage.path="<%= @storage_path %>" \
+  -web.external-url="<%= @external_url %>" \
+  -web.listen-address=<%= @listen_addr %> \
+  -web.local-assets="<%= @local_assets %>" \
+"
