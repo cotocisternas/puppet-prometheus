@@ -1,10 +1,14 @@
 ---
 prometheus::pkg_version: latest
 prometheus::pkg_name: prometheus
-prometheus::config_dir: '/etc/prometheus'
 prometheus::config_mode: '0644'
+prometheus::bind: '0.0.0.0'
 prometheus::port: '9090'
+prometheus::config_dir: '/etc/prometheus'
+prometheus::config_file: 'prometheus.yml'
 prometheus::config_template: 'prometheus/prometheus.yml.erb'
+prometheus::init_file: '/etc/default/prometheus'
+prometheus::init_template: 'prometheus/prometheus.erb'
 prometheus::manage_service: true
 prometheus::manage_firewall: true
 prometheus::purge: false
@@ -16,6 +20,62 @@ prometheus::service_provider: ~
 lookup_options:
   prometheus::options:
     merge: deep
+  prometheus::defaults:
+    merge: deep
+
+prometheus::defaults:
+  alertmanager:
+    notification_queue_capacity: 10000
+    timeout: 10s
+    url:
+  log:
+    format: logger:stdout
+    level: info
+  query:
+    max_concurrency: 20
+    staleness_delta: 5m0s
+    timeout: 2m0s
+  storage:
+    local:
+      checkpoint_dirty_series_limit: 5000
+      checkpoint_interval: 5m0s
+      chunk_encoding_version: 1
+      dirty: false
+      max_chunks_to_persist: 524288
+      memory_chunks: 1048576
+      path: /var/lib/prometheus/metrics
+      pedantic_checks: false
+      retention: 360h0m0s
+      series_file_shrink_ratio: 0.1
+      series_sync_strategy: adaptive
+      index_cache_size:
+        fingerprint_to_metric: 10485760
+        fingerprint_to_timerange: 5242880
+        label_name_to_label_values: 10485760
+        label_pair_to_fingerprints: 20971520
+    remote:
+      graphite:
+        url:
+        prefix:
+        transport:
+      influxdb:
+        url:
+        database:
+        retention_policy:
+        username:
+        password:
+      opentsdb:
+        url:
+      timeout: 10s
+  web:
+    console:
+      libraries: /etc/prometheus/console_libraries
+      templates: /etc/prometheus/consoles
+    enable_remote_shutdown: false
+    external_url: http://%{::hostname}:9090
+    local_assets: /usr/share/prometheus/web/
+    telemetry_path: /metrics
+    user_assets:
 
 prometheus::options:
   global:

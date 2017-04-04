@@ -3,6 +3,9 @@
 # Author: Coto Cisternas <cotocisternas@gmail.com>
 class prometheus::config::prometheus inherits prometheus {
 
+  $listen_addr    = join([$bind,$port], ':')
+  $conf_file      = join([$config_dir,$config_file], '/')
+
   file { $::prometheus::config_dir:
     ensure  => 'directory',
     owner   => 'prometheus',
@@ -13,12 +16,21 @@ class prometheus::config::prometheus inherits prometheus {
     notify  => Service[$::prometheus::service_name]
   }
 
-  file { "${::prometheus::config_dir}/prometheus.yml":
+  file { "${::prometheus::config_dir}/${::prometheus::config_file}":
     ensure  => present,
     owner   => 'prometheus',
     group   => 'prometheus',
     mode    => $::prometheus::config_mode,
     content => template($::prometheus::config_template),
     require => File[$::prometheus::config_dir]
+  }
+
+  file { $::prometheus::init_file:
+    ensure  => present,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => template($::prometheus::init_template),
+    require => Package[$::prometheus::pkg_name]
   }
 }

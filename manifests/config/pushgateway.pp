@@ -5,12 +5,12 @@ class prometheus::config::pushgateway inherits prometheus::pushgateway {
 
   $listen_addr    = join([$bind,$port], ':')
 
-  file { $::prometheus::pushgateway::config_file:
+  file { $::prometheus::pushgateway::init_file:
     ensure  => present,
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => template($::prometheus::pushgateway::config_template),
+    content => template($::prometheus::pushgateway::init_template),
     require => Package[$::prometheus::pushgateway::pkg_name]
   }
 }

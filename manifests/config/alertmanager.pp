@@ -4,6 +4,7 @@
 class prometheus::config::alertmanager inherits prometheus::alertmanager {
 
   $listen_addr    = join([$bind,$port], ':')
+  $conf_file      = join([$::prometheus::config_dir,$config_file], '/')
 
   file { $::prometheus::alertmanager::init_file:
     ensure  => present,
@@ -14,11 +15,11 @@ class prometheus::config::alertmanager inherits prometheus::alertmanager {
     require => Package[$::prometheus::alertmanager::pkg_name]
   }
 
-  file { $::prometheus::alertmanager::config_file:
+  file { "${::prometheus::config_dir}/${::prometheus::alertmanager::config_file}":
     ensure  => present,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
+    owner   => 'prometheus',
+    group   => 'prometheus',
+    mode    => $::prometheus::config_mode,
     content => template($::prometheus::alertmanager::config_template),
     require => Package[$::prometheus::alertmanager::pkg_name]
   }

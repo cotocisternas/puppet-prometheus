@@ -3,8 +3,6 @@ prometheus::pushgateway::pkg_version: latest
 prometheus::pushgateway::pkg_name: prometheus-pushgateway
 prometheus::pushgateway::bind: '0.0.0.0'
 prometheus::pushgateway::port: '9091'
-prometheus::pushgateway::config_file: '/etc/default/prometheus-pushgateway'
-prometheus::pushgateway::config_template: 'prometheus/pushgateway.erb'
 prometheus::pushgateway::manage_service: true
 prometheus::pushgateway::manage_firewall: true
 prometheus::pushgateway::service_name: prometheus-pushgateway
@@ -12,6 +10,8 @@ prometheus::pushgateway::service_enable: true
 prometheus::pushgateway::service_ensure: running
 prometheus::pushgateway::service_provider: ~
 
+prometheus::pushgateway::init_file: '/etc/default/prometheus-pushgateway'
+prometheus::pushgateway::init_template: 'prometheus/pushgateway.erb'
 prometheus::pushgateway::persistence_file: '/var/lib/prometheus/pushgateway.data'
 prometheus::pushgateway::local_assets: '/usr/share/prometheus/pushgateway'
 prometheus::pushgateway::persistence_interval: '5m0s'

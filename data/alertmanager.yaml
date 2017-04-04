@@ -3,8 +3,6 @@ prometheus::alertmanager::pkg_version: latest
 prometheus::alertmanager::pkg_name: prometheus-alertmanager
 prometheus::alertmanager::bind: '0.0.0.0'
 prometheus::alertmanager::port: '9093'
-prometheus::alertmanager::init_file: '/etc/default/prometheus-alertmanager'
-prometheus::alertmanager::init_template: 'prometheus/alertmanager.erb'
 prometheus::alertmanager::manage_service: true
 prometheus::alertmanager::manage_firewall: true
 prometheus::alertmanager::service_name: prometheus-alertmanager
@@ -12,8 +10,11 @@ prometheus::alertmanager::service_enable: true
 prometheus::alertmanager::service_ensure: running
 prometheus::alertmanager::service_provider: ~
 
-prometheus::alertmanager::config_file: '/etc/prometheus/alertmanager.yml'
+prometheus::alertmanager::config_file: 'alertmanager.yml'
 prometheus::alertmanager::config_template: 'prometheus/alertmanager.yml.erb'
+
+prometheus::alertmanager::init_file: '/etc/default/prometheus-alertmanager'
+prometheus::alertmanager::init_template: 'prometheus/alertmanager.erb'
 prometheus::alertmanager::log_level: info
 prometheus::alertmanager::storage_path: '/var/lib/prometheus/alertmanager/'
 prometheus::alertmanager::external_url: 'localhost'

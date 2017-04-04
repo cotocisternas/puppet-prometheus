@@ -1,0 +1,44 @@
+# Set the command-line arguments to pass to the server.
+ARGS="\
+  -config.file=<%= @conf_file %> \
+  -alertmanager.notification-queue-capacity=<%= @defaults['alertmanager']['notification_queue_capacity'] %> \
+  -alertmanager.timeout=<%= @defaults['alertmanager']['timeout'] %> \
+  -alertmanager.url=<%= @defaults['alertmanager']['url'] %> \
+  -log.format=<%= @defaults['log']['format'] %> \
+  -log.level=<%= @defaults['log']['level'] %> \
+  -query.max-concurrency=<%= @defaults['query']['max_concurrency'] %> \
+  -query.staleness-delta=<%= @defaults['query']['staleness_delta'] %> \
+  -query.timeout=<%= @defaults['query']['timeout'] %> \
+  -storage.local.checkpoint-dirty-series-limit=<%= @defaults['storage']['local']['checkpoint_dirty_series_limit'] %> \
+  -storage.local.checkpoint-interval=<%= @defaults['storage']['local']['checkpoint_interval'] %> \
+  -storage.local.chunk-encoding-version=<%= @defaults['storage']['local']['chunk_encoding_version'] %> \
+  -storage.local.dirty=<%= @defaults['storage']['local']['dirty'] %> \
+  -storage.local.index-cache-size.fingerprint-to-metric=<%= @defaults['storage']['local']['index_cache_size']['fingerprint_to_metric'] %> \
+  -storage.local.index-cache-size.fingerprint-to-timerange=<%= @defaults['storage']['local']['index_cache_size']['fingerprint_to_timerange'] %> \
+  -storage.local.index-cache-size.label-name-to-label-values=<%= @defaults['storage']['local']['index_cache_size']['label_name_to_label_values'] %> \
+  -storage.local.index-cache-size.label-pair-to-fingerprints=<%= @defaults['storage']['local']['index_cache_size']['label_pair_to_fingerprints'] %> \
+  -storage.local.max-chunks-to-persist=<%= @defaults['storage']['local']['max_chunks_to_persist'] %> \
+  -storage.local.memory-chunks=<%= @defaults['storage']['local']['memory_chunks'] %> \
+  -storage.local.path=<%= @defaults['storage']['local']['path'] %> \
+  -storage.local.pedantic-checks=<%= @defaults['storage']['local']['pedantic_checks'] %> \
+  -storage.local.retention=<%= @defaults['storage']['local']['retention'] %> \
+  -storage.local.series-file-shrink-ratio=<%= @defaults['storage']['local']['series_file_shrink_ratio'] %> \
+  -storage.local.series-sync-strategy=<%= @defaults['storage']['local']['series_sync_strategy'] %> \
+  -storage.remote.graphite-address=<%= @defaults['storage']['remote']['graphite']['address'] %> \
+  -storage.remote.graphite-prefix=<%= @defaults['storage']['remote']['graphite']['prefix'] %> \
+  -storage.remote.graphite-transport=<%= @defaults['storage']['remote']['graphite']['transport'] %> \
+  -storage.remote.influxdb-url=<%= @defaults['storage']['remote']['influxdb']['url'] %> \
+  -storage.remote.influxdb.database=<%= @defaults['storage']['remote']['influxdb']['database'] %> \
+  -storage.remote.influxdb.retention-policy=<%= @defaults['storage']['remote']['influxdb']['retention_policy'] %> \
+  -storage.remote.influxdb.username=<%= @defaults['storage']['remote']['influxdb']['username'] %> \
+  -storage.remote.opentsdb-url=<%= @defaults['storage']['remote']['opentsdb']['url'] %> \
+  -storage.remote.timeout=<%= @defaults['storage']['remote']['timeout'] %> \
+  -web.console.libraries=<%= @defaults['web']['console']['libraries'] %> \
+  -web.console.templates=<%= @defaults['web']['console']['templates'] %> \
+  -web.enable-remote-shutdown=<%= @defaults['web']['enable_remote_shutdown'] %> \
+  -web.external-url=<%= @defaults['web']['external_url'] %> \
+  -web.listen-address=<%= @listen_addr %> \
+  -web.local-assets=<%= @defaults['web']['local_assets'] %> \
+  -web.telemetry-path=<%= @defaults['web']['telemetry_path'] %> \
+  -web.user-assets=<%= @defaults['web']['user_assets'] %> \
+"
