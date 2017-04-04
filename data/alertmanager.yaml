@@ -2,7 +2,7 @@
 prometheus::alertmanager::pkg_version: latest
 prometheus::alertmanager::pkg_name: prometheus-alertmanager
 prometheus::alertmanager::bind: '0.0.0.0'
-prometheus::alertmanager::port: '9091'
+prometheus::alertmanager::port: '9093'
 prometheus::alertmanager::init_file: '/etc/default/prometheus-alertmanager'
 prometheus::alertmanager::init_template: 'prometheus/alertmanager.erb'
 prometheus::alertmanager::manage_service: true
@@ -24,5 +24,9 @@ lookup_options:
     merge: deep
 
 prometheus::alertmanager::options:
+  global:
   templates:
     - '/etc/prometheus/alertmanager_templates/*.tmpl'
+  route:
+  inhibit_rules:
+  receivers:
