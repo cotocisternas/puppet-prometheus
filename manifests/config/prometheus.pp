@@ -6,6 +6,8 @@ class prometheus::config::prometheus inherits prometheus {
   $listen_addr    = join([$bind,$port], ':')
   $conf_file      = join([$config_dir,$config_file], '/')
 
+  contain ::prometheus::config::alerts
+
   file { $::prometheus::config_dir:
     ensure  => 'directory',
     owner   => 'prometheus',

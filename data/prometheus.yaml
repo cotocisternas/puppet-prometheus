@@ -5,6 +5,7 @@ prometheus::config_mode: '0644'
 prometheus::bind: '0.0.0.0'
 prometheus::port: '9090'
 prometheus::config_dir: '/etc/prometheus'
+prometheus::alertfile_name: alert.rules
 prometheus::config_file: 'prometheus.yml'
 prometheus::config_template: 'prometheus/prometheus.yml.erb'
 prometheus::init_file: '/etc/default/prometheus'
@@ -21,6 +22,8 @@ lookup_options:
   prometheus::options:
     merge: deep
   prometheus::defaults:
+    merge: deep
+  prometheus::alerts:
     merge: deep
 
 prometheus::defaults:
@@ -84,9 +87,5 @@ prometheus::options:
     evaluation_interval: 1m
     external_labels:
       hostname: "%{::hostname}"
-  scrape_configs:
-    - job_name: prometheus
-      scrape_interval: 5s
-      static_configs:
-        - targets:
-            - localhost:9090
+  rule_files:
+    - /etc/prometheus/alert.rules

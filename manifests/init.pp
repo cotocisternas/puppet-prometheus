@@ -9,6 +9,7 @@ class prometheus (
   Stdlib::Absolutepath $config_dir,
   String $config_file,
   String $config_template,
+  String $alertfile_name,
   Stdlib::Absolutepath $init_file,
   String $init_template,
   String $config_mode,
@@ -19,6 +20,7 @@ class prometheus (
   Boolean $service_enable,
   String $service_ensure,
   Optional[String] $service_provider,
+  Array $alerts,
   Hash $options,
   Hash $defaults,
   ) {
