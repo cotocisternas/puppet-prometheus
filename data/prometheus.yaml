@@ -32,12 +32,11 @@ prometheus::defaults:
     timeout: 10s
     url:
   log:
-    format: logger:stdout
     level: info
   query:
     max_concurrency: 20
-    staleness_delta: 5m0s
-    timeout: 2m0s
+    lookback_delta: 5m
+    timeout: 2m
   storage:
     local:
       checkpoint_dirty_series_limit: 5000
