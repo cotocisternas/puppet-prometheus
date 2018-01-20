@@ -27,57 +27,33 @@ lookup_options:
     merge: deep
 
 prometheus::defaults:
+  web:
+    read_timeout: 5m
+    max_connections: 512
+    external_url: http://%{::hostname}:9090
+    local_assets: /usr/share/prometheus/web/
+    user_assets:
+    lifecycle: true
+    admin_api: true
+    console:
+      libraries: /etc/prometheus/console_libraries
+      templates: /etc/prometheus/consoles
   alertmanager:
     notification_queue_capacity: 10000
     timeout: 10s
-    url:
-  log:
-    level: info
+  storage:
+    tsdb:
+      path: /var/lib/prometheus/metrics2/
+      min_block_duration: 2h
+      max_block_duration:
+      retention: 15d
+      no_lockfile: true
   query:
     max_concurrency: 20
     lookback_delta: 5m
     timeout: 2m
-  storage:
-    local:
-      checkpoint_dirty_series_limit: 5000
-      checkpoint_interval: 5m0s
-      chunk_encoding_version: 1
-      dirty: false
-      max_chunks_to_persist: 524288
-      memory_chunks: 1048576
-      path: /var/lib/prometheus/metrics
-      pedantic_checks: false
-      retention: 360h0m0s
-      series_file_shrink_ratio: 0.1
-      series_sync_strategy: adaptive
-      index_cache_size:
-        fingerprint_to_metric: 10485760
-        fingerprint_to_timerange: 5242880
-        label_name_to_label_values: 10485760
-        label_pair_to_fingerprints: 20971520
-    remote:
-      graphite:
-        url:
-        prefix:
-        transport:
-      influxdb:
-        url:
-        database:
-        retention_policy:
-        username:
-        password:
-      opentsdb:
-        url:
-      timeout: 10s
-  web:
-    console:
-      libraries: /etc/prometheus/console_libraries
-      templates: /etc/prometheus/consoles
-    enable_remote_shutdown: false
-    external_url: http://%{::hostname}:9090
-    local_assets: /usr/share/prometheus/web/
-    telemetry_path: /metrics
-    user_assets:
+  log:
+    level: info
 
 prometheus::options:
   global:
@@ -86,5 +62,5 @@ prometheus::options:
     evaluation_interval: 1m
     external_labels:
       hostname: "%{::hostname}"
-  rule_files:
-    - /etc/prometheus/alert.rules
+  # rule_files:
+  #   - /etc/prometheus/alert.rules
