@@ -3,7 +3,7 @@
 # Author: Coto Cisternas <cotocisternas@gmail.com>
 class prometheus::config::pushgateway inherits prometheus::pushgateway {
 
-  $listen_addr    = join([$bind,$port], ':')
+  $listen_addr    = join([$::prometheus::bind,$::prometheus::port], ':')
 
   file { $::prometheus::pushgateway::init_file:
     ensure  => present,

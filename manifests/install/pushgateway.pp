@@ -3,7 +3,7 @@
 # Author: Coto Cisternas <cotocisternas@gmail.com>
 class prometheus::install::pushgateway inherits prometheus::pushgateway {
 
-  package { "${::prometheus::pushgateway::pkg_name}":
+  package { $::prometheus::pushgateway::pkg_name:
     ensure => $::prometheus::pushgateway::pkg_version,
   }
 

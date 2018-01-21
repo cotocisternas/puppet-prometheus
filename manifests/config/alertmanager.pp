@@ -3,8 +3,8 @@
 # Author: Coto Cisternas <cotocisternas@gmail.com>
 class prometheus::config::alertmanager inherits prometheus::alertmanager {
 
-  $listen_addr    = join([$bind,$port], ':')
-  $conf_file      = join([$::prometheus::config_dir,$config_file], '/')
+  $listen_addr    = join([$::prometheus::bind,$::prometheus::port], ':')
+  $conf_file      = join([$::prometheus::config_dir,$::prometheus::config_file], '/')
 
   file { $::prometheus::alertmanager::init_file:
     ensure  => present,

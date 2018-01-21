@@ -3,8 +3,8 @@
 # Author: Coto Cisternas <cotocisternas@gmail.com>
 class prometheus::config::node_exporter inherits prometheus::node_exporter {
 
-  $collectors_str = join($collectors, ',')
-  $listen_addr    = join([$bind,$port], ':')
+  $collectors_str = join($::prometheus::collectors, ',')
+  $listen_addr    = join([$::prometheus::bind,$::prometheus::port], ':')
 
   file { $::prometheus::node_exporter::init_file:
     ensure  => present,

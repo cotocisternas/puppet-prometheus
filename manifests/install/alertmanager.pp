@@ -3,7 +3,7 @@
 # Author: Coto Cisternas <cotocisternas@gmail.com>
 class prometheus::install::alertmanager inherits prometheus::alertmanager {
 
-  package { "${::prometheus::alertmanager::pkg_name}":
+  package { $::prometheus::alertmanager::pkg_name:
     ensure => $::prometheus::alertmanager::pkg_version,
   }
 

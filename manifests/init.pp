@@ -19,18 +19,17 @@ class prometheus (
   String $service_name,
   Boolean $service_enable,
   String $service_ensure,
-  Optional[String] $service_provider,
-  Array $alerts,
   Hash $options,
   Hash $defaults,
+  Optional[Array] $alerts,
   ) {
 
   contain ::prometheus::install::prometheus
   contain ::prometheus::config::prometheus
   contain ::prometheus::service::prometheus
 
-  Class['::prometheus::install::prometheus'] ->
-  Class['::prometheus::config::prometheus'] ~>
-  Class['::prometheus::service::prometheus']
+  Class['::prometheus::install::prometheus']
+  -> Class['::prometheus::config::prometheus']
+  ~> Class['::prometheus::service::prometheus']
 
 }

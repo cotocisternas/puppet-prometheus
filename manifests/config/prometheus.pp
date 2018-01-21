@@ -3,8 +3,8 @@
 # Author: Coto Cisternas <cotocisternas@gmail.com>
 class prometheus::config::prometheus inherits prometheus {
 
-  $listen_addr    = join([$bind,$port], ':')
-  $conf_file      = join([$config_dir,$config_file], '/')
+  $listen_addr    = join([$::prometheus::bind,$::prometheus::port], ':')
+  $conf_file      = join([$::prometheus::config_dir,$::prometheus::config_file], '/')
 
   contain ::prometheus::config::alerts
 
@@ -12,13 +12,13 @@ class prometheus::config::prometheus inherits prometheus {
     ensure  => 'directory',
     owner   => 'prometheus',
     group   => 'prometheus',
-    purge   => $prometheus::purge,
-    recurse => $prometheus::purge,
+    purge   => $::prometheus::purge,
+    recurse => $::prometheus::purge,
     require => Package[$::prometheus::pkg_name],
     notify  => Service[$::prometheus::service_name]
   }
 
-  file { "${::prometheus::config_dir}/${::prometheus::config_file}":
+  file { "${prometheus::config_dir}/${prometheus::config_file}":
     ensure  => present,
     owner   => 'prometheus',
     group   => 'prometheus',

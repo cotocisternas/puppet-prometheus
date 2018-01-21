@@ -3,7 +3,7 @@
 # Author: Coto Cisternas <cotocisternas@gmail.com>
 class prometheus::install::node_exporter inherits prometheus::node_exporter {
 
-  package { "${::prometheus::node_exporter::pkg_name}":
+  package { $::prometheus::node_exporter::pkg_name:
     ensure => $::prometheus::node_exporter::pkg_version,
   }
 

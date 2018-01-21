@@ -15,7 +15,7 @@ ARGS="\
   -storage.tsdb.min-block-duration=<%= @defaults['storage']['tsdb']['min_block_duration'] %>
   -storage.tsdb.max-block-duration=<%= @defaults['storage']['tsdb']['max_block_duration'] %>
   -storage.tsdb.retention=<%= @defaults['storage']['tsdb']['retention'] %>
-  <%= @defaults['storage']['tsdn']['no_lockfile'] ? '-storage.tsdb.no-lockfile' : '' %> \
+  <%= @defaults['storage']['tsdb']['no_lockfile'] ? '-storage.tsdb.no-lockfile' : '' %> \
   -alertmanager.notification-queue-capacity=<%= @defaults['alertmanager']['notification_queue_capacity'] %> \
   -alertmanager.timeout=<%= @defaults['alertmanager']['timeout'] %> \
   -query.max-concurrency=<%= @defaults['query']['max_concurrency'] %> \

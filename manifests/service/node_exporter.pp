@@ -3,7 +3,7 @@
 # Author: Coto Cisternas <cotocisternas@gmail.com>
 class prometheus::service::node_exporter inherits prometheus::node_exporter {
 
-  service { "${::prometheus::node_exporter::service_name}":
+  service { $::prometheus::node_exporter::service_name:
     ensure      => $::prometheus::node_exporter::service_ensure,
     enable      => $::prometheus::node_exporter::service_enable,
     name        => $::prometheus::node_exporter::service_name,

@@ -27,7 +27,7 @@ class prometheus::alertmanager (
   contain ::prometheus::config::alertmanager
   contain ::prometheus::service::alertmanager
 
-  Class['::prometheus::install::alertmanager'] ->
-  Class['::prometheus::config::alertmanager'] ~>
-  Class['::prometheus::service::alertmanager']
+  Class['::prometheus::install::alertmanager']
+  -> Class['::prometheus::config::alertmanager']
+  ~> Class['::prometheus::service::alertmanager']
 }

@@ -16,7 +16,6 @@ prometheus::purge: false
 prometheus::service_name: prometheus
 prometheus::service_enable: true
 prometheus::service_ensure: running
-prometheus::service_provider: ~
 
 lookup_options:
   prometheus::options:
@@ -64,3 +63,5 @@ prometheus::options:
       hostname: "%{::hostname}"
   # rule_files:
   #   - /etc/prometheus/alert.rules
+
+prometheus::alerts:

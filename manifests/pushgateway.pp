@@ -25,7 +25,7 @@ class prometheus::pushgateway (
   contain ::prometheus::config::pushgateway
   contain ::prometheus::service::pushgateway
 
-  Class['::prometheus::install::pushgateway'] ->
-  Class['::prometheus::config::pushgateway'] ~>
-  Class['::prometheus::service::pushgateway']
+  Class['::prometheus::install::pushgateway']
+  -> Class['::prometheus::config::pushgateway']
+  ~> Class['::prometheus::service::pushgateway']
 }

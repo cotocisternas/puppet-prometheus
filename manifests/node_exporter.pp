@@ -34,7 +34,7 @@ class prometheus::node_exporter (
   contain ::prometheus::config::node_exporter
   contain ::prometheus::service::node_exporter
 
-  Class['::prometheus::install::node_exporter'] ->
-  Class['::prometheus::config::node_exporter'] ~>
-  Class['::prometheus::service::node_exporter']
+  Class['::prometheus::install::node_exporter']
+  -> Class['::prometheus::config::node_exporter']
+  ~> Class['::prometheus::service::node_exporter']
 }
