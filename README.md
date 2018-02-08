@@ -1,4 +1,6 @@
 # prometheus
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcotocisternas%2Fpuppet-prometheus.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcotocisternas%2Fpuppet-prometheus?ref=badge_shield)
+
 
 #### Table of Contents
 
@@ -81,3 +83,7 @@ know what the ground rules for contributing are.
 If you aren't using changelog, put your release notes here (though you should
 consider using changelog). You can also add any additional sections you feel
 are necessary or important to include here. Please use the `## ` header.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fcotocisternas%2Fpuppet-prometheus.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fcotocisternas%2Fpuppet-prometheus?ref=badge_large)
